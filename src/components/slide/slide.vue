@@ -1,7 +1,7 @@
 <template>
   <div class="carousel-wrap mt13">
     <transition-group name="slide" tag="ul" class="slide-ul">
-      <li v-for="(item,index) in slideList" :key="index" v-show="index === currentIndex" @mouseenter="stopPlay" @mouseleave="go">
+      <li v-for="(item,index) in slideList" :key="index" v-show="index === currentIndex" @mouseenter="stopPlay" @mouseleave="autoPlay">
         <a :href="item.clickUrl">
           <img :src="item.image" :alt="item.desc">
         </a>
@@ -28,15 +28,9 @@
       require(`./${this.model}.css`)
     },
     mounted() {
-      this.go();
+      this.autoPlay();
     },
     methods: {
-      reduceNum(item){
-        if (item.num<=1) {
-          return false;
-        }
-        item.num--;
-      },
       changeSlide(index){
         if (this.hover) {
           this.stopPlay();
@@ -44,10 +38,10 @@
         this.currentIndex = index;
       },
       autoPlay(){
-        this.currentIndex ++;
-        if (this.currentIndex > this.slideList.length-1) {
-          this.currentIndex = 0;
-        }
+        this.timer = setInterval(()=>{
+          this.hover = false
+          this.go()
+        }, 3000)
       },
       stopPlay(){
         clearInterval(this.timer);
@@ -55,10 +49,10 @@
         this.hover = true;
       },
       go(){
-        this.timer = setInterval(()=>{
-          this.hover = false;
-          this.autoPlay()
-        }, 3000)
+        this.currentIndex ++;
+        if (this.currentIndex > this.slideList.length-1) {
+          this.currentIndex = 0;
+        }
       }
     }
   }

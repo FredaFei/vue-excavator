@@ -11,17 +11,10 @@ import Minicart from 'components/minicart/minicart.vue'
 import Pagination from 'components/pagination/pagination.vue'
 
 import cart from 'js/cartService.js'
+import product from 'js/productService.js'
 import bus from 'js/bus.js'
 
 import utils from 'js/utils.js'
-import { fetch, rap } from 'js/fetch.js'
-let url = {
-  classify: '/lists/classify.do',
-  lists: '/lists/lists.do',
-  articles: '/article/articles.do'
-}
-
-url = rap(url)
 
 new Vue({
   el: '#app',
@@ -57,7 +50,7 @@ new Vue({
   },
   methods: {
     getClassify() {
-      fetch(url.classify).then(res => {
+      product.classify().then(res => {
         this.classifyList = res.data.classifyList
         this.typeList = this.classifyList[this.brandIndex].childrenList
       })
@@ -92,20 +85,21 @@ new Vue({
     },
     query(callBack) {
       let reqUrl = ''
-      if (this.state === 4) {
-        reqUrl = url.articles
-      } else {
-        reqUrl = url.lists
-      }
-
-      fetch(reqUrl, {
+      let data = {
         brandId: this.brandId,
         keywords: this.keyword,
         typeId: this.typeId,
         type: this.state,
         pageNum: this.pageNum,
         pageSize: this.pageSize
-      }).then(res => {
+      }
+      if (this.state === 4) {
+        reqUrl = product.articles(data)
+      } else {
+        reqUrl = product.lists(data)
+      }
+
+      reqUrl.then(res => {
         this.lists = res.data.list
         this.total = res.data.total
         if (callBack) {

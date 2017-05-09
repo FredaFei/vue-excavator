@@ -5,6 +5,9 @@ import Search from 'components/search/search.vue'
 import Foot from 'components/foot/foot.vue'
 import Logstate from 'components/logstate/logstate.vue'
 import Minicart from 'components/minicart/minicart.vue'
+import CountControl from 'components/countControl/countControl.vue'
+import MonthControl from 'components/monthControl/monthControl.vue'
+
 import { Message } from 'element-ui'
 import collect from 'js/collectService.js'
  import order from 'js/orderService.js'
@@ -74,27 +77,6 @@ new Vue({
     collect() {
       this.isCollect =! this.isCollect
     },
-    reduceNumber() {
-      if (this.number===1) {
-        return 
-      }
-      this.number--;
-    },
-    addNumber() {
-      if (this.state ===3 && this.number===this.merchandise.stock) {
-        return
-      }
-      this.number++;
-    },
-    reduceMonth() {
-      if (this.month===3) {
-        return
-      }
-      this.month--;
-    },
-    addMonth() {
-      this.month++;
-    },
     addCart() {
 
     },
@@ -112,6 +94,8 @@ new Vue({
     Foot,
     Search,
     Logstate,
-    Minicart
+    Minicart,
+    CountControl,
+    MonthControl
   }
 })

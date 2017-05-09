@@ -49,19 +49,11 @@
               </dl>
               <dl>
                 <dt>选择数量：</dt>
-                <dd class="num">
-                  <a class="icon-jian" href="javascript:;" @click='reduceNumber'></a>
-                  <input type="text" disabled v-model.number='number'>
-                  <a class="icon-jia" href="javascript:;" @click='addNumber'></a>
-                </dd>
+                  <count-control :state='state' :merchandise='merchandise' :num='number'></count-control>
               </dl>
               <dl v-if='state === 1'>
                 <dt>租赁月数：</dt>
-                <dd class="num">
-                  <a class="icon-jian" href="javascript:;" @click='reduceMonth'></a>
-                  <input type="text" disabled v-model.number='month'>
-                  <a class="icon-jia" href="javascript:;" @click='addMonth'></a>
-                </dd>
+                  <month-control :mon='month'></month-control>
               </dl>
               <dl>
                 <dt>运&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;费：</dt>
@@ -96,11 +88,7 @@
               </dl>
               <dl>
                 <dt>选择数量：</dt>
-                <dd class="num">
-                  <a class="icon-jian" href="javascript:;" @click='reduceNumber'></a>
-                  <input type="text" disabled v-model.number='number'>
-                  <a class="icon-jia" href="javascript:;" @click='addNumber'></a>
-                </dd>
+                  <count-control :state='state' :merchandise='merchandise' :num='number'></count-control>
               </dl>
               <dl>
                 <dt>运&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;费：</dt>

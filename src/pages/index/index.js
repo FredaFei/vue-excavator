@@ -17,7 +17,7 @@ new Vue({
   components: { slide, top, foot, search },
   data: {
     excavatorList: '', // 挖掘机
-    partsList: '', //配件
+    partsList: '', // 配件
     slideList: ''
   },
   created() {

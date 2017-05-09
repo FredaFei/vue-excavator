@@ -108,7 +108,6 @@
   }
   .search-ul-wrap {
     position: absolute;
-    left: -1px;
     top: 38px;
     z-index: 10;
     padding-top: 4px;
@@ -119,16 +118,16 @@
     border-radius: 2px;
     border: 1px solid #c4c4c4;
     li {
-      height: 30px;
+      a {
+        display: block;
+        width: 72px;
+        height: 30px;
+        font-size: 12px;
+        line-height: 30px;
+        color: #bababa;
+      }
     }
-    a {
-      display: block;
-      width: 74px;
-      height: 30px;
-      font-size: 12px;
-      line-height: 30px;
-      color: #bababa;
-    }
+    
     .select a,
     a:hover {
       color: $btn-color;

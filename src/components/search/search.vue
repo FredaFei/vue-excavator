@@ -15,7 +15,7 @@
             </ul>
           </div>
         </div>
-        <input type="text" v-model.trim='keyword' :placeholder="'请输入您想搜索的'+ curList.msg">
+        <input type="text" v-model.trim='keyword' :placeholder="'请输入您想搜索的'+ curList.msg" @keyup.enter='search'>
         <button @click='search'>
           <i class="icon-search"></i>
         </button>

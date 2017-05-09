@@ -131,29 +131,6 @@ section {
         padding-right: 5px;
       }
     }
-    .num {
-      font-size: 0;
-      width: 100px;
-      font-size: 0;
-      input {
-        border: 0 none;
-        width: 40px;
-        height: 14px;
-        font-size: 14px;
-        line-height: 14px;
-        padding: 0 5px;
-        text-align: center;
-        color: #3b3b3b;
-        vertical-align: middle;
-      }
-      a {
-        display: inline-block;
-        vertical-align: middle;
-        font-size: 16px;
-        line-height: 14px;
-        color: $theme-color;
-      }
-    }
   }
   .btns {
     position: relative;
