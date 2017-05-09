@@ -1,0 +1,17 @@
+.slide-enter-active {
+  transition: all 1s ease;
+  transform: translateX(0);
+}
+
+.slide-leave-active {
+  transition: all 1s ease;
+  transform: translateX(-100%);
+}
+
+.slide-enter {
+  transform: translateX(100%);
+}
+
+.slide-leave {
+  transform: translateX(0);
+}

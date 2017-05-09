@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>registe</title>
+  <style>
+    *{margin: 0; padding:0;}
+    [v-cloak] {
+      display: none;
+    }
+    .content{
+      margin: 80px auto;
+    }
+  </style>
+</head>
+<body>
+<div id="register-wrapper" v-cloak>
+  <register-com :desc="desc"></register-com>
+</div>
+  <!-- components 全局注册-->
+  <template id="form-box">
+    <div id="registe-box">
+      <div class="registe-box" v-show="!showFlag">
+        <div class="registe-msg-com registe-phone">
+          <label id="reg-phone">注册手机号：</label>
+          <input type="tel" placeholder="请输入手机号" id="reg-phone" v-model.trim="phone" @blur="checkPhone($event)"><button class="verifily-code" @click="getCode($event)">{{changeCodeText}}</button>
+          <p class="validate-msg">{{phoneMsg}}</p>
+        </div>
+        <div class="registe-msg-com registe-pwd">
+          <label id="reg-code">输入验证码：</label>
+          <input type="text" placeholder="请输入验证码" id="reg-code" v-model.trim="code" @blur="checkVlidate($event)">
+          <p class="validate-msg">{{validMsg}}</p>
+        </div>
+        <div class="registe-msg-com registe-pwd">
+          <label id="reg-pwd">登录密码：</label>
+          <input type="password" placeholder="请输入密码" id="reg-pwd" v-model.trim="pwd1" @blur="checkPassword($event)">
+          <p class="validate-msg">{{pwdMsg1}}</p>
+        </div>
+        <div class="registe-msg-com registe-pwd">
+          <label id="reg-phone2">确认密码：</label>
+          <input type="password" placeholder="请再一次输入密码" id="reg-phone2" v-model.trim="pwd2" @blur="againCheckPwd($event)">
+          <p class="validate-msg">{{pwdMsg2}}</p>
+        </div>
+        <div class="registe-footer">
+          <a href="" class="registe-submit" @click.stop.prevent="registe($event)">{{desc.btnmsg}}</a>
+        </div>
+      </div>
+      <div class="registe-success" v-show="showFlag">
+        <p>{{desc.info}}</p>
+        <a href="" class="login-submit" @click.stop.prevent="login($event)">登录</a>
+      </div>
+    </div> 
+  </template>
+</body>
+</html>

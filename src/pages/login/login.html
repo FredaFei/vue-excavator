@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>login</title>
+  <link rel="stylesheet" href="http://at.alicdn.com/t/font_1466005263_4110875.css">
+  <style>
+    [v-cloak] {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="login-wrapper" v-cloak>
+    <top></top>
+    <!-- 登录 -->
+    <div class="wrap">
+      <div class="login-content">
+        <div class="login-title">—— 登录 ——</div>
+        <div class="login-box" id="login-box" v-cloak>
+          <div class="login-msg-com login-phone">
+            <span class="icon-id pics"></span>
+            <input type="tel" placeholder="请输入手机号" v-model.trim="phone" @blur="checkPhone($event)">
+            <p class="validate-msg">{{phoneMsg}}</p>
+          </div>
+          <div class="login-msg-com login-pwd">
+            <span class="icon-key pics"></span>
+            <input type="password" placeholder="请输入密码" v-model.trim="pwd" @blur="checkPassword($event)">
+            <p class="validate-msg">{{pwdMsg}}</p>
+          </div>
+          <div class="login-footer">
+            <a href="" class="login-submit" @click.stop.prevent="login($event)">登录</a>
+            <a href="forgetPwd.html" class="forget">忘记密码</a>
+            <a href="register.html" class="registe">立即注册</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <foot></foot>
+  </div>
+</body>
+</html>

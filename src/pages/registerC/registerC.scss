@@ -1,0 +1,80 @@
+@import "../../modules/sass/variables.scss";
+
+.registe-box{
+  width: 410px;
+  margin: auto;
+  .registe-msg-com{
+    padding: 5px;
+    label{
+      
+    }
+    input{
+      width: 200px;
+      height: 32px;
+      line-height: 32px;
+      padding-left: 5px;
+      font-size: 14px;
+      border-radius: 2px;
+      border: 1px solid #d2cdc9;
+      &:focus{
+        border: 1px solid #9999ff;
+      }
+    }
+    .verifily-code{
+      height: 32px;
+      line-height: 32px;
+      width: 80px;
+      margin-left: 8px;
+      color: #fff;
+      font-size: 13px;
+      border-radius: 2px;
+      background: #ccc;
+      cursor: pointer;
+      &:hover{
+        background: #aaa;
+      }
+    }
+    .validate-msg{
+      color: red;
+      height: 27px;
+      font-size: 12px;
+      padding-top: 5px;
+    }
+  }
+  .registe-footer{
+    margin-top: 20px;
+    text-align: center;
+    .registe-submit{
+      display: inline-block;
+      padding: 8px 20px;
+      color: #fff;
+      font-size: 14px;
+      border-radius: 2px;
+      background-color: #7a924a;
+      border-radius: 2px;
+    }
+  }
+}
+
+.registe-success{
+  margin-top: 50px;
+  text-align: center;
+  p{
+    color: #333;
+    font-size: 36px;
+  }
+  .login-submit{
+    display: inline-block;
+    padding: 8px 20px;
+    margin: 15px 0;
+    font-size: 14px;
+    color: #fff;
+    border: 1px solid #6d7756;
+    border-top-color: #7c8762;
+    background-color: #7a924a;
+    border-radius: 2px;
+    background-image: linear-gradient(to bottom, #99ae69, #667c3a);
+    box-shadow: 0px 1px 0px rgba(170,170,170,1), inset 0px 1px 1px rgba(255,255,255,0.7);
+    cursor: pointer;
+  }
+}

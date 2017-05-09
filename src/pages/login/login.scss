@@ -1,0 +1,79 @@
+@import "../../modules/sass/variables.scss";
+
+.login-content{
+  width: 310px;
+  margin: 80px auto;
+  padding: 30px 20px;
+  background: url(imgs/login_bg.png) repeat;
+  border-radius: 3px;
+  box-shadow: 0px 1px 2px 1px #aaaaaa, inset 0px 1px 1px rgba(255,255,255,0.7);
+  .login-title{
+	  height: 40px;
+	  line-height: 40px;
+	  text-align: center;
+	  font-size: 20px;
+	  color: #625e5b;
+	}
+	.login-box{
+	  padding: 5px;
+	  .login-msg-com{
+		  position: relative;
+	    margin-bottom: 20px;
+		  .pics{
+		  	position: absolute;
+		    top: 12px;
+		    left: 12px;
+		    color: #988e87;
+		    font-size: 16px;
+		  }
+		  .validate-msg{
+		  	font-size: 14px;
+			  color: red;
+			  padding: 2px;
+		  }
+		  input{
+		    width: 100%;
+		    height: 40px;
+		    line-height: 40px;
+		    padding-left: 35px;
+		    font-size: 14px;
+		    border-radius: 4px;
+		    border: 1px solid #d2cdc9;
+		    background-color: #e1dcd8;
+		    box-sizing: border-box;
+		    box-shadow: 0px 1px 3px #fff, inset 0px 1px 2px #aaa;
+		    &:focus{
+				  color: #625e5b;
+		    	background-color: #f5f2ef;
+			  }
+		  }
+		}
+		.login-footer{
+			.forget,.registe{
+				font-size: 12px;
+		    color: #988e87;
+		    margin: 0 5px;
+			}
+			.login-submit{
+				display: block;
+			  width: 100%;
+		    height: 40px;
+		    line-height: 40px;
+		    margin: 5px 0 10px;
+		    text-align: center;
+		    font-size: 14px;
+		    color: #fff;
+		    border: 1px solid #6d7756;
+		    border-top-color: #7c8762;
+		    background-color: #7a924a;
+		    border-radius: 2px;
+		    background-image: linear-gradient(to bottom, #99ae69, #667c3a);
+		    box-shadow: 0px 1px 0px rgba(170,170,170,1), inset 0px 1px 1px rgba(255,255,255,0.7);
+		    cursor: pointer;
+			}
+		}
+	}
+}
+
+
+

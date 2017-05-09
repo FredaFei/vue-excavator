@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>vue-loader</title>
+
+  <style module>
+    .red {
+      color: red;
+    }
+    .bold {
+      font-weight: bold;
+    }
+  </style>
+
+</head>
+<body>
+  <div id="app">
+    xxx
+    <child-cop></child-cop>
+  </div>
+
+  <template id="child">
+    <p :class="$style.red">
+      This should be red
+    </p>
+    <h1>{{msg}}</h1>
+  </template>
+
+
+</body>
+</html>

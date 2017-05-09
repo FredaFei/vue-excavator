@@ -1,0 +1,17 @@
+.slide-enter-active {
+  transition: all 2s ease-in-out;
+  opacity: 1;
+}
+
+.slide-leave-active {
+  transition: all 2s ease-in-out;
+  opacity: 0;
+}
+
+.slide-enter {
+  opacity: 0;
+}
+
+.slide-leave {
+  opacity: 1;
+}
