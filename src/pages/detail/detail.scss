@@ -39,7 +39,7 @@ section {
     height: 86px;
     width: 360px;
     overflow: hidden;
-    padding: 6px 13px 0 15px;
+    padding: 6px 13px 0 12px;
     ul {
       position:absolute;
       overflow: hidden;
@@ -49,7 +49,7 @@ section {
         height: 82px;
         width: 82px;
         border: 2px solid #dcdcdc;
-        margin: 0 2px;
+        margin: 0 2px 0 2px;
         img {
           display: block;
           width: 100%;
@@ -66,6 +66,7 @@ section {
       line-height: 86px;
       text-align: center;
       background-color: #dcdcdc;
+      border: none;
     }
     .left-btn {
       left: 0;

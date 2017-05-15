@@ -3,22 +3,18 @@ import address from 'js/addressService.js'
 import EditAddress from './editAddress.vue'
 import { Message } from 'element-ui'
 import { mapState,mapActions,mapMutations } from 'vuex'
-
 export default {
   data() {
     return {
-      // lists: '',
-      // edit: false,
-      add: null, // 修改新增实例
+      add: null,
       pageSize: 10,
-      pageNum: 1,
-      total: 0
+      pageNum: 1
     }
   },
-  computed: mapState(['lists','edit']),
   created() {
     this.getLists()
   },
+  computed: mapState(['lists','edit','total']),
   methods: {
     ...mapActions(['getLists','deleteAddress','setDefault']),
     ...mapMutations(['changeEdit']),

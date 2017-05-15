@@ -12,6 +12,7 @@ import { Message } from 'element-ui'
 import collect from 'js/collectService.js'
  import order from 'js/orderService.js'
 import Utils from 'js/utils.js'
+import bus from 'js/bus.js'
 
 import { fetch, rap } from 'js/fetch.js'
 let url = {
@@ -57,9 +58,11 @@ new Vue({
         this.$nextTick(()=>{
           var li = document.getElementsByClassName('s-pic')[0]
           let liOutwidth = li.offsetWidth
-          let left = +(getComputedStyle(li).marginLeft.replace('px',''))
-          let right = +(getComputedStyle(li).marginRight.replace('px',''))
-          return this.liWidth = liOutwidth+left+right
+          let margin = +(getComputedStyle(li).marginRight.replace('px',''))
+          let border = +(getComputedStyle(li).borderLeftWidth.replace('px',''))
+          console.log(liOutwidth)
+          console.log(liOutwidth+margin+border)
+          return this.liWidth = liOutwidth+margin+border*2
         })
       })
     },
@@ -77,8 +80,16 @@ new Vue({
     collect() {
       this.isCollect =! this.isCollect
     },
-    addCart() {
-
+    addCart(merchandise) {
+      collect.add({
+          month: this.state == 1 ? 1 : undefined, // 租
+          number: 1,
+          type: this.state,
+          unifiedMerchandiseId: merchandise.unifiedMerchandiseId
+      }).then((res) => {
+          Message(res.message)
+          bus.$emit('add', merchandise.unifiedMerchandiseId)
+      })
     },
     goApply(){
       let product = {

@@ -36,10 +36,10 @@
 </template>
 
 <script>
-import user from 'js/userService.js'
-import { Upload, Dialog} from 'element-ui'
-Vue.use(Upload)
-Vue.use(Dialog)
+  import user from 'js/userService.js'
+  import { Upload, Dialog} from 'element-ui'
+  Vue.use(Upload)
+  Vue.use(Dialog)
 
   export default {
     data() {

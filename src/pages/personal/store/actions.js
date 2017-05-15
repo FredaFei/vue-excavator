@@ -5,39 +5,39 @@ import { Message } from 'element-ui'
 const actions = {
     getLists({commit}){
         addressAPI.addresslist().then(res=>{
-            commit(types.RECEIVE_ADDRESSES, {
+            commit(types.RECEIVE_ADDRESSES,{
                 lists: res.data.list,
                 total: res.data.total
             })
         })
     },
-    deleteAddress({commit},{ id,index }){
+    deleteAddress({commit}, {id,index}){
         addressAPI.delete({
             consigneeId: id
         }).then(res=>{
+            commit(types.DELETE_ADDRESS,{index})
             Message({message: res.message})
-            commit(types.DELETE_ADDRESS, { index })
         })
     },
     setDefault({commit}, {address}){
-        addressAPI.setDefault({
+       addressAPI.setDefault({
             consigneeId: address.id
         }).then(res=>{
+            commit(types.SET_DEFAULT,{address})
             Message({message: res.message})
-            commit(types.SET_DEFAULT,{ address })
-        })
+        }) 
     },
     addAddress({commit}, {address}){
-        addressAPI.add(address).then(res=>{
+       addressAPI.add(address).then(res=>{
+            commit(types.ADD_ADDRESS,{address})
             Message({message: res.message})
-            commit(types.ADD_ADDRESS,{ address })
-        })
+       })
     },
-    updateAddress({commit},{address}){
+    updateAddress({commit}, {address}){
         addressAPI.update(address).then(res=>{
+            commit(types.UPDATE_ADDRESSS,{address})
             Message({message: res.message})
-            commit(types.UPDATE_ADDRESSS, { address })
-        })
+       })
     }
 }
 

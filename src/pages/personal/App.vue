@@ -45,6 +45,10 @@
       bus.$on('login',(user)=>{
         this.user = user
       });
+      bus.$on('changeInfo', (userInfo)=>{
+        this.user.nickname = userInfo.nickname
+        this.user.headImage = userInfo.headImage
+      })
       let pathString = location.href.split('#/')[1]
       if (pathString) { // 一级路由带参数
         if (pathString.indexOf('?')>-1) {

@@ -1,5 +1,5 @@
 function isLegalPhone(str){
-  return /^1[3-9]\d{9}$/.test(str);
+  return /^1[3-9]\d{9}$/g.test(str);
 }
 // 密码（长度6-20个字符，包括大写字母、小写字母、数字、下划线至少两种）
 function isLegalPassword(str){
@@ -18,7 +18,11 @@ function isLegalPassword(str){
 }
 
 function isLegalValidate(str){
-  return /^[a-z0-9]{4}$/.test(str);
+  return /^[a-z0-9]{4}$/g.test(str);
 }
 
-export{isLegalPhone, isLegalPassword, isLegalValidate};
+function isLegalName(str){
+  return /^[a-zA-Z0-9_]{2,8}$/g.test(str);
+}
+
+export{isLegalPhone, isLegalPassword, isLegalValidate, isLegalName};

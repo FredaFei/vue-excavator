@@ -66,13 +66,19 @@ export default {
         }
       })
     },
-    add(para) {
-      cart.add({
+    getOptions(para){
+      let options = {
         month: para.month,
         number: para.number,
         type: para.type,
         unifiedMerchandiseId: para.item.unifiedMerchandiseId
-      }).then(res=>{
+      }
+      return options
+    },
+    add(para) {
+      cart.add(
+        this.getOptions(para)
+      ).then(res=>{
         if (para.month) {
           para.item.month++;
         }else{
@@ -94,12 +100,9 @@ export default {
           return 
         }
       }
-      cart.reduce({
-        month: para.month,
-        number: para.number,
-        type: para.type,
-        unifiedMerchandiseId: para.item.unifiedMerchandiseId
-      }).then(res=>{
+      cart.reduce(
+        this.getOptions(para)
+      ).then(res=>{
         if (para.month) {
           para.item.month--;
         }else{

@@ -39,6 +39,8 @@
 <script>
   import user from 'js/userService.js'
   import {isLegalPhone,isLegalPassword} from 'js/validata.js'
+  import bus from 'js/bus.js'
+
   export default {
     data() {
       return {
@@ -56,12 +58,6 @@
         this.$refs.imgfile.click()
       },
       upload() {
-        // let data = new FormData()
-        // data.append('headimg',this.$refs.imgfile.files[0])
-        // user.headImg(data).then(res=>{
-        //     this.headImage = res.data.headImg
-        // })
-        // 对图片类型、大小、宽高做限制
         new Promise((resolve,reject)=>{
             let file = this.$refs.imgfile.files[0]
             const isJPG = file.type === 'image/jpeg'
@@ -90,7 +86,11 @@
         
       },
       saveInfo() {
-
+        let userInfo = {
+          nickname: this.user.nickname,
+          headImage: this.headImage
+        }
+        bus.$emit('changeInfo', userInfo)
       }
     }
   }

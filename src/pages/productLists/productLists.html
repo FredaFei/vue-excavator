@@ -2,109 +2,120 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <title>挖掘机租赁列表</title>
+    <meta charset="UTF-8">
+    <title>挖掘机租赁列表</title>
 </head>
 
 <body>
-  <div id="app" v-cloak>
-    <top></top>
-    <search></search>
-    <div class="main-content-w clearfix">
-      <!--right-->
-      <section>
-        <!--个人中心-->
-        <logstate></logstate>
-        <!--购物车中心-->
-        <minicart :state='state'></minicart>
-      </section>
-      <!--left  列表-->
-      <div class="left-content mt13">
-        <!--商品列表（租，售，配件，商品搜索）-->
-        <div class="cur-index">
-          当前位置：<a href="index.html">首页</a> > <i>{{positionMsg}}</i>
-        </div>
-        <!--搜索为空-->
-        <div class="search-empty" v-if="lists&&lists.length==0">
-          <i class="icon-no-data"></i>
-          <p>很抱歉，查询不到相应的数据！</p>
-        </div>
-        <div>
-          <!--文章列表-->
-          <div v-if="state==4">
-            <ul class="article-lists mt13">
-              <li v-for="(list,index) in lists">
-                <i>{{index+1}}</i>
-                <p><a href="">{{list.name}}</a></p>
-                <span>{{list.dateStr}}</span>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <!--品牌选择-->
-            <div class="brand-sort mt13" v-if="!keyword">
-              <dl>
-                <dt>品&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;牌：</dt>
-                <dd>
-                  <a v-for="(item,index) in classifyList" :class="{'cur': index===brandIndex}" href="javascript:;" @click="selectBrand(index)">{{item.name}}</a>
-                </dd>
-              </dl>
-              <dl>
-                <dt>类&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;型：</dt>
-                <dd>
-                  <a v-for="(item,index) in typeList" :class="{'cur': index===typeIndex}" href="javascript:;" @click="selectType(index,item)">
-              {{item.name}}</a>
-                </dd>
-              </dl>
+    <div id="app" v-cloak>
+        <top></top>
+        <search></search>
+        <div class="main-content-w clearfix">
+            <!--right-->
+            <section>
+                <!--个人中心-->
+                <logstate></logstate>
+                <!--购物车中心-->
+                <minicart :state='state'></minicart>
+            </section>
+            <!--left  列表-->
+            <div class="left-content mt13">
+                <!--商品列表（租，售，配件，商品搜索）-->
+                <div class="cur-index">
+                    当前位置：
+                    <a href="index.html">首页</a> >
+                    <i>{{positionMsg}}</i>
+                </div>
+                <!--搜索为空-->
+                <div class="search-empty" v-if="lists&&lists.length==0">
+                    <i class="icon-no-data"></i>
+                    <p>很抱歉，查询不到相应的数据！</p>
+                </div>
+                <div>
+                    <!--文章列表-->
+                    <div v-if="state==4">
+                        <ul class="article-lists mt13">
+                            <li v-for="(list,index) in lists">
+                                <i>{{index+1}}</i>
+                                <p>
+                                    <a href="">{{list.name}}</a>
+                                </p>
+                                <span>{{list.dateStr}}</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                    <!--品牌选择-->
+                    <div class="brand-sort mt13" v-if="!keyword">
+                        <dl>
+                            <dt>品&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;牌：</dt>
+                            <dd>
+                                <a v-for="(item,index) in classifyList" :class="{'cur': index===brandIndex}" href="javascript:;" @click="selectBrand(index)">{{item.name}}</a>
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>类&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;型：</dt>
+                            <dd>
+                                <a v-for="(item,index) in typeList" :class="{'cur': index===typeIndex}" href="javascript:;" @click="selectType(index,item)">
+                                    {{item.name}}</a>
+                            </dd>
+                        </dl>
+                    </div>
+                    <!--商品列表-->
+                    <ul class="products-lists mt13">
+                        <!--租、售-->
+                        <li v-if="state<3" v-for="(item,index) in lists">
+                            <a :href="'detail.html?id='+item.merchantId+'&state='+state">
+                                <img :src="item.image">
+                            </a>
+                            <div class="products-lists-item">
+                                <h4>{{item.name}}</h4>
+                                <span>{{item.desc}}</span>
+                                <dl>
+                                    <dt>载重：</dt>
+                                    <dd>{{item.weight}}{{item.unit}}</dd>
+                                </dl>
+                                <dl v-if="state===1">
+                                    <dt>租金：</dt>
+                                    <dd>
+                                        <i>{{item.discount}}</i>元/辆/月</dd>
+                                    <dd class="special">(3个月起租)</dd>
+                                </dl>
+                                <dl v-else>
+                                    <dt>单价：</dt>
+                                    <dd>
+                                        <i>{{item.discount}}</i>元</dd>
+                                </dl>
+                            </div>
+                            <button @click="add(item)">加入购物车</button>
+                        </li>
+                        <!--配件-->
+                        <li v-if="state===3" v-for="(item,index) in lists">
+                            <a :href="'detail.html?id='+item.merchantId+'&state='+state">
+                                <img :src="item.image">
+                            </a>
+                            <div class="products-lists-item">
+                                <h4>{{item.name}}</h4>
+                                <div class="adaptation-situation">
+                                    <h5>适配挖掘机</h5>
+                                    <span v-for="list in item.adapterForkliftType">{{list}}</span>
+                                </div>
+                                <dl>
+                                    <dt>单价：</dt>
+                                    <dd>
+                                        <i>{{item.discount}}</i>元</dd>
+                                </dl>
+                            </div>
+                            <button @click="add(item)">加入购物车</button>
+                        </li>
+                    </ul>
+                </div>
+                    <pagination :total="total" :page-size="pageSize" :page-num="pageNum" :display="3" @change="changePage"></pagination>
+                </div>
             </div>
-            <!--商品列表-->
-            <ul class="products-lists mt13">
-              <!--租、售-->
-              <li v-if="state<3" v-for="(item,index) in lists">
-                <a :href="'detail.html?id='+item.merchantId+'&state='+state"><img :src="item.image"></a>
-                <div class="products-lists-item">
-                  <h4>{{item.name}}</h4>
-                  <span>{{item.desc}}</span>
-                  <dl>
-                    <dt>载重：</dt>
-                    <dd>{{item.weight}}{{item.unit}}</dd>
-                  </dl>
-                  <dl v-if="state===1">
-                    <dt>租金：</dt>
-                    <dd><i>{{item.discount}}</i>元/辆/月</dd>
-                    <dd class="special">(3个月起租)</dd>
-                  </dl>
-                  <dl v-else>
-                    <dt>单价：</dt>
-                    <dd><i>{{item.discount}}</i>元</dd>
-                  </dl>
-                </div>
-                <button @click="add(item)" >加入购物车</button>
-              </li>
-              <!--配件-->
-              <li v-if="state===3" v-for="(item,index) in lists">
-                <a :href="'detail.html?id='+item.merchantId+'&state='+state"><img :src="item.image"></a>
-                <div class="products-lists-item">
-                  <h4>{{item.name}}</h4>
-                  <div class="adaptation-situation">
-                    <h5>适配挖掘机</h5>
-                    <span v-for="list in item.adapterForkliftType">{{list}}</span>
-                  </div>
-                  <dl>
-                    <dt>单价：</dt>
-                    <dd><i>{{item.discount}}</i>元</dd>
-                  </dl>
-                </div>
-                <button @click="add(item)" >加入购物车</button>
-              </li>
-            </ul>
-          </div>
-          <pagination :total="total" :page-size="pageSize" :page-num="pageNum" :display="3" @change="changePage"></pagination>
         </div>
-      </div>
+        <foot></foot>
     </div>
-    <foot></foot>
-  </div>
 </body>
 
 </html>

@@ -2,7 +2,7 @@ import {fetch,rap} from 'js/fetch.js'
 
 let url = {
   cancel: '/collect/cancel.do',
-  add: ' /collect/add.do',
+  add: '/collect/add.do',
   detail: '/product/detail.do',
   lists: '/collect/lists.do'
 }
