@@ -61,7 +61,6 @@
                     return;
                 }
             }
-            
             cart.add({
                 month: data.month,
                 number: data.number,
@@ -144,8 +143,8 @@
                 item.isSelected = this.allSelected
             })
         },
-        calsum() {
-
+        goIndex() {
+            location.href = 'index.html'
         },
         remove() {
             let idArr = []

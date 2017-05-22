@@ -53,7 +53,7 @@ default {
             });
         },
         change(page) {
-            
+            this.pageNum = page
         }
     },
     watch: {

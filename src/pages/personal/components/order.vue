@@ -48,7 +48,7 @@
                     <!-- 待付款 -->
                     <template v-if='item.state === 1'>
                       <button>立即支付</button>
-                      <button class="bgc-white" @click='cancel(item.orderId)'>取消订单</button>
+                      <button class="bgc-white" @click='cancel(item.orderId,index)'>取消订单</button>
                     </template>
 
                     <!-- 待签收 -->
@@ -57,7 +57,7 @@
                     </template>
                      <!-- 订单关闭、订单取消 -->
                     <template v-if='item.state === 4'>
-                      <button class="bgc-white" @click='remove(item.orderId)'>删除订单</button>
+                      <button class="bgc-white" @click='remove(item.orderId,index)'>删除订单</button>
                     </template>
                 </div>
             </div>

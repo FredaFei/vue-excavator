@@ -1,5 +1,6 @@
 import Pagination from 'components/pagination/pagination.vue'
 import order from 'js/orderService.js'
+import { MessageBox,Message } from 'element-ui'
 
 export default {
     data() {
@@ -27,17 +28,31 @@ export default {
                     this.total = data.total
                 })
             },
-            cancel(orderId) {
-
+            cancel(orderId,index) {
+                order.cancel({
+                    orderId: orderId
+                }).then(res=>{
+                    Message(res.message)
+                    this.lists.splice(index,1)
+                })
             },
-            remove(orderId) {
-
+            remove(orderId,index) {
+                order.delete({
+                    orderId: orderId
+                }).then(res=>{
+                    Message(res.message)
+                    this.lists.splice(index,1)
+                })
             },
             sign(orderId) {
-
+                order.sign({
+                    orderId: orderId
+                }).then(res=>{
+                    Message(res.message)
+                })
             },
             change(page) {
-
+                this.pageNum = page
             }
         },
         watch: {
